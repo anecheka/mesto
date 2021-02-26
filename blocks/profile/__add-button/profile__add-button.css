@@ -1,11 +1,11 @@
 .profile__add-button {
     box-sizing: border-box;
-    width: 150px; 
+    width: 150px;
     height: 50px;
     background: transparent;
     margin: 0;
     padding: 0;
-    border: 2px solid #FFFFFF; 
+    border: 2px solid #FFFFFF;
     border-radius: 2px;
     object-position: middle;
     padding-top: 14px;
@@ -16,7 +16,7 @@
 }
 
 .profile__add-button:hover {
-    cursor: pointer; 
+    cursor: pointer;
     opacity: 0.6;
 }
 
