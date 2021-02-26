@@ -1,0 +1,11 @@
+.profile__first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+@media (max-width: 320px) {
+    .profile__first-line {
+      justify-content: flex-end;
+    }
+}
