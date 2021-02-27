@@ -2,7 +2,6 @@
     display: block;
     border: 0;
     max-width: 358px;
-    height: 27px;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     font-size: 14px;
@@ -11,4 +10,12 @@
     color: #000;
     margin-bottom: 44px;
     outline: 0;
+    padding-bottom: 13px;
+}
+
+@media (max-width: 600px) {
+    .form__input {
+        max-width: 238px;
+        margin-bottom: 30px;
+    }
 }

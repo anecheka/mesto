@@ -1,11 +1,11 @@
-.profile__first-line {
+.profile__username-editing {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
 @media (max-width: 320px) {
-    .profile__first-line {
+    .profile__username-editing {
       justify-content: flex-end;
     }
 }

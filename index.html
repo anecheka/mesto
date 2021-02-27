@@ -15,70 +15,70 @@
             <div class="profile__all-user-info">
                 <img src="images/profile__avatar_user_1.jpg" alt="Фотография профиля" class="profile__avatar">
                 <div class="profile__info">
-                    <div class="profile__first-line">
+                    <div class="profile__username-editing">
                         <h1 class="profile__username">Жак-Ив Кусто</h1>
-                        <button type="button" id="edit-profile" class="profile__edit-button"></button>
+                        <button type="button" id="edit-profile" class="profile__edit-button" aria-label="Редактировать профиль"></button>
                     </div>
                     <p class="profile__bio">Исследователь океана</p>
                 </div>
             </div>
-            <button type="button" class="profile__add-button" id="add-element"></button>
+            <button type="button" class="profile__add-button" id="add-element" aria-label="Добавить место"></button>
         </div>
         <ul class="elements">
             <li class="element">
-                <img src="./images/elements_karachaevsk.jpg" alt="Фотография места карточки" class="element__photo">
+                <img src="./images/elements_karachaevsk.jpg" alt="Фотография места: Карачаевск" class="element__photo">
                 <div class="element__info">
                     <h2 class="element__title">Карачаевск</h2>
-                    <button type="button" class="element__like-button"></button>
+                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
                 </div>
             </li>
             <li class="element">
-                <img src="./images/elements_elbrus.jpg" alt="Фотография места карточки" class="element__photo">
+                <img src="./images/elements_elbrus.jpg" alt="Фотография места: Эльбрус" class="element__photo">
                 <div class="element__info">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <button type="button" class="element__like-button"></button>
+                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
                 </div>
             </li>
             <li class="element">
-                <img src="./images/elements__dombay.jpg" alt="Фотография места карточки" class="element__photo">
+                <img src="./images/elements__dombay.jpg" alt="Фотография места: Домбай" class="element__photo">
                 <div class="element__info">
                     <h2 class="element__title">Домбай</h2>
-                    <button type="button" class="element__like-button"></button>
+                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
                 </div>
             </li>
             <li class="element">
-                <img src="./images/elements_elbrus.jpg" alt="Фотография места карточки" class="element__photo">
+                <img src="./images/elements_elbrus.jpg" alt="Фотография места: Эльбрус" class="element__photo">
                 <div class="element__info">
                     <h2 class="element__title">Гора Эльбрус</h2>
-                    <button type="button" class="element__like-button"></button>
+                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
                 </div>
             </li>
             <li class="element">
-                <img src="./images/elements__dombay.jpg" alt="Фотография места карточки" class="element__photo">
+                <img src="./images/elements__dombay.jpg" alt="Фотография места: Домбай" class="element__photo">
                 <div class="element__info">
                     <h2 class="element__title">Домбай</h2>
-                    <button type="button" class="element__like-button"></button>
+                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
                 </div>
             </li>
             <li class="element">
-                <img src="./images/elements_karachaevsk.jpg" alt="Фотография места карточки" class="element__photo">
+                <img src="./images/elements_karachaevsk.jpg" alt="Фотография места: Карачаевск" class="element__photo">
                 <div class="element__info">
                     <h2 class="element__title">Карачаевск</h2>
-                    <button type="button" class="element__like-button"></button>
+                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
                 </div>
             </li>
         </ul>
         <div class="popup">
             <div class="popup__content">
-                <form class="form">
+                <form class="form" name="Edit-profile-form">
                     <h2 class="form__title">Редактировать профиль</h2>
                     <fieldset class="form__container">
-                        <input class="form__input" type="text" id="username">
-                        <input class="form__input" type="text" id="bio">
+                        <input class="form__input" type="text" name="Username" id="username">
+                        <input class="form__input" type="text" name="Bio" id="bio">
                         <button type="submit" class="form__submit-button" id="submit-profile-info">Сохранить</button>
                     </fieldset>
                 </form>
-                <button type="button" class="close-icon" id="close-popup"></button>
+                <button type="button" class="close-icon" id="close-popup" aria-label="Сохранить"></button>
             </div>
         </div>
     </main>

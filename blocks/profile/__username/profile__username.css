@@ -1,4 +1,5 @@
 .profile__username {
+    max-width: 294px;
     margin: 0;
     padding: 0;
     color: #FFFFFF;
@@ -6,10 +7,14 @@
     line-height: 48px;
     font-weight: 500;
     padding-right: 18px;
+    text-overflow: ellipsis;   
+    white-space: nowrap;   
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
     .profile__username {
+        max-width: 189px;
         font-size: 27px;
         line-height: 30px;
         text-align: center;

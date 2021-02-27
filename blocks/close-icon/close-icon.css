@@ -11,9 +11,19 @@
     height: 40px;
     background-image: url('../../images/close_icon.svg');
     background-position: center;
+    outline: none;
 }
 
 .close-icon:hover {
     cursor: pointer;
     opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+    .close-icon {
+        width: 26px;
+        height: 26px;
+        right: 0px;
+        top: -39px;
+    }
 }
