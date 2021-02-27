@@ -1,10 +1,14 @@
 .profile__bio {
+    max-width: 336px;
     margin: 0;
     color: #FFFFFF;
     font-size: 18px;
     line-height: 22px;
     font-weight: 400;
     margin-top: 16px;
+    text-overflow: ellipsis;   
+    white-space: nowrap;   
+    overflow: hidden;
 }
 
 @media (max-width: 900px) {
@@ -14,6 +18,7 @@
 }
 @media (max-width: 768px) {
     .profile__bio {
+      max-width: 238px;
       margin-top: 14px;
       font-size: 14px;
       line-height: 17px;
