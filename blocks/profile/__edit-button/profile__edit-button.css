@@ -21,6 +21,7 @@
 
 @media (max-width: 320px) {
     .profile__edit-button {
+        background-image: url('../../../images/profile__edit_button_mobile.svg');
         width: 18px;
         height: 18px;
         top: -6px;
