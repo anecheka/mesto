@@ -21,7 +21,7 @@
 
 @media (min-width: 1281px) {
     .root {
-      padding-right: calc((100vw - 1280px)/2);
-      padding-left: calc((100vw - 1280px)/2);
+      padding-right: calc(50% - 640px);
+      padding-left: calc(50% - 640px);
     }
 }

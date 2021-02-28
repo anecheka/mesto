@@ -25,5 +25,6 @@
         height: 26px;
         right: 0px;
         top: -39px;
+        background-image: url('../../images/close_icon_mobile.svg');
     }
 }
