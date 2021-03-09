@@ -59,8 +59,6 @@ formEditProfile.addEventListener('submit', submitInfo);
 Можно написать имя карточки и дать ссылку на картинку.
 Сделайте так, чтобы при клике на «сохранить» новая карточка попадала в начало контейнера с ними. А диалоговое окно после добавления автоматически закрывалось.
 
-
-
 */
 
 const clickAddPhoto = document.querySelector('#add-element'); //Переменная для кнопки добавления фото
@@ -172,7 +170,6 @@ formAddPhoto.addEventListener('submit', submitAddedPhoto);
 //Вызываем функцию открытия попапа при клике на иконку добавления фото
 clickAddPhoto.addEventListener('click', showAddPhoto);
 
-
 //Вызываем функцию закрытия попапа добавления фото при клике на иконку крестика 
 closePopupAddPhoto.addEventListener('click', clickCloseAddPhoto);
 
@@ -210,7 +207,7 @@ const initialCards = [
     }
   ];
 
-//Пишем функцию с циклом, который берет данные из массива initialCards и добавляем в галерею
+//Пишем функцию с циклом, которая берет данные из массива initialCards и добавляем в галерею
 function renderGallery() {
     const result = initialCards.map(createPhotoDOMNode);
 
