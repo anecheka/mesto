@@ -28,7 +28,7 @@
 @import url("../blocks/popup/__full-photo-container/popup__full-photo-container.css");
 @import url("../blocks/popup/__full-photo/popup__full-photo.css");
 @import url("../blocks/popup/__full-photo-title/popup__full-photo-title.css");
-@import url("../blocks/popup/__use/_view-full-photo/popup__use_view-full-photo.css");
+@import url("../blocks/popup/_use/_view-full-photo/popup_use_view-full-photo.css");
 @import url("../blocks/form/form.css");
 @import url("../blocks/form/__title/form__title.css");
 @import url("../blocks/form/__container/form__container.css");
