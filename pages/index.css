@@ -19,10 +19,16 @@
 @import url("../blocks/element/__title/element__title.css");
 @import url("../blocks/element/__photo/element__photo.css");
 @import url("../blocks/element/__like-button/element__like-button.css");
+@import url("../blocks/element/__like-button/_active/element__like-button_active.css");
+@import url("../blocks/element/__delete-button/element__delete-button.css");
 @import url("../blocks/element/__info/element__info.css");
 @import url("../blocks/popup/popup.css");
 @import url("../blocks/popup/_is-opened/popup_is-opened.css");
 @import url("../blocks/popup/__content/popup__content.css");
+@import url("../blocks/popup/__full-photo-container/popup__full-photo-container.css");
+@import url("../blocks/popup/__full-photo/popup__full-photo.css");
+@import url("../blocks/popup/__full-photo-title/popup__full-photo-title.css");
+@import url("../blocks/popup/__use/_view-full-photo/popup__use_view-full-photo.css");
 @import url("../blocks/form/form.css");
 @import url("../blocks/form/__title/form__title.css");
 @import url("../blocks/form/__container/form__container.css");

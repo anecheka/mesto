@@ -25,52 +25,10 @@
             <button type="button" class="profile__add-button" id="add-element" aria-label="Добавить место"></button>
         </div>
         <ul class="elements">
-            <li class="element">
-                <img src="./images/elements_karachaevsk.jpg" alt="Фотография места: Карачаевск" class="element__photo">
-                <div class="element__info">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
-                </div>
-            </li>
-            <li class="element">
-                <img src="./images/elements_elbrus.jpg" alt="Фотография места: Эльбрус" class="element__photo">
-                <div class="element__info">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
-                </div>
-            </li>
-            <li class="element">
-                <img src="./images/elements__dombay.jpg" alt="Фотография места: Домбай" class="element__photo">
-                <div class="element__info">
-                    <h2 class="element__title">Домбай</h2>
-                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
-                </div>
-            </li>
-            <li class="element">
-                <img src="./images/elements_elbrus.jpg" alt="Фотография места: Эльбрус" class="element__photo">
-                <div class="element__info">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
-                </div>
-            </li>
-            <li class="element">
-                <img src="./images/elements__dombay.jpg" alt="Фотография места: Домбай" class="element__photo">
-                <div class="element__info">
-                    <h2 class="element__title">Домбай</h2>
-                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
-                </div>
-            </li>
-            <li class="element">
-                <img src="./images/elements_karachaevsk.jpg" alt="Фотография места: Карачаевск" class="element__photo">
-                <div class="element__info">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
-                </div>
-            </li>
         </ul>
-        <div class="popup">
+        <div class="popup popup__use_edit-profile">
             <div class="popup__content">
-                <form class="form" name="Edit-profile-form">
+                <form class="form form__function_edit-profile" name="Edit-profile-form">
                     <h2 class="form__title">Редактировать профиль</h2>
                     <fieldset class="form__container">
                         <input class="form__input" type="text" name="Username" id="username">
@@ -78,13 +36,43 @@
                         <button type="submit" class="form__submit-button" id="submit-profile-info">Сохранить</button>
                     </fieldset>
                 </form>
-                <button type="button" class="close-icon" id="close-popup" aria-label="Сохранить"></button>
+                <button type="button" class="close-icon" id="close-popup-edit-profile" aria-label="Закрыть"></button>
+            </div>
+        </div>
+        <div class="popup popup__use_add-photo">
+            <div class="popup__content">
+                <form class="form form__function_add-photo" name="Add-new-location-photo">
+                    <h2 class="form__title">Новое место</h2>
+                    <fieldset class="form__container">
+                        <input class="form__input" type="text" name="Location-name" id="location-name">
+                        <input class="form__input" type="text" name="Photo-url" id="photo-url">
+                        <button type="submit" class="form__submit-button" id="submit-photo-info">Создать</button>
+                    </fieldset>
+                </form>
+                <button type="button" class="close-icon" id="close-popup-add-photo" aria-label="Закрыть"></button>
+            </div>
+        </div>
+        <div class="popup popup__use_view-full-photo">
+            <div class="popup__full-photo-container">
+                <img class="popup__full-photo" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
+                <p class="popup__full-photo-title">Карачаевск</p>
+                <button type="button" class="close-icon" id="close-popup-view-full-photo" aria-label="Закрыть"></button>
             </div>
         </div>
     </main>
     <footer class="footer root__section-position">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <template id="photo">
+        <li class="element">
+            <img class="element__photo">
+            <button type="button" class="element__delete-button" aria-label="Удалить фотографию"></button>
+            <div class="element__info">
+                <h2 class="element__title"></h2>
+                <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
+            </div>
+        </li>
+      </template>
     <script src="./scripts/script.js">
     </script>
 </body>
