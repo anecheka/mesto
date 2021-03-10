@@ -10,8 +10,8 @@
     bottom: 0;
     right: 0;
     opacity: 0;
-    transition: visibility 0s linear, opacity .5s ease-in-out;
-    -moz-transition:  visibility 0s linear, opacity .5s ease-in-out;
-    -webkit-transition:  visibility 0s linear, opacity .5s ease-in-out;
-    -o-transition:  visibility 0s linear, opacity .5s ease-in-out;
+    transition: visibility .5s linear, opacity .5s ease-in-out;
+    -moz-transition:  visibility .5s linear, opacity .5s ease-in-out;
+    -webkit-transition:  visibility .5s linear, opacity .5s ease-in-out;
+    -o-transition:  visibility .5s linear, opacity .5s ease-in-out;
 }

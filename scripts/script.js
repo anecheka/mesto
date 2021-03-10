@@ -15,9 +15,14 @@ const formEditProfile = document.querySelector('.form.form_function_edit-profile
 
 */
 
+//++Функция закрытия попапа - универсальная для всех попапов
+function closePopup(popup) {
+  popup.classList.remove('popup_is-opened');
+}
+
 //Функция закрытия попапа редактирования профиля
 function clickCloseEditProfile() {
-    popupEditProfile.classList.remove('popup_is-opened');
+  closePopup(popupEditProfile);
 };
 
 //Функция сохранения информации из попапа в профиль пользователя (редактирование профиля)
@@ -26,9 +31,14 @@ function editProfile() {
     currentBio.textContent = newBio.value;
 };
 
+//++Функция открытия попапа - универсальная для всех попапов
+function openPopup(popup) {
+  popup.classList.add('popup_is-opened');
+}
+
 //Функция открытия попапа редактирования профиля
 function showPopupEditProfile() {
-    popupEditProfile.classList.add('popup_is-opened');
+    openPopup(popupEditProfile);
     newUsername.value = currentUsername.textContent;
     newBio.value = currentBio.textContent;
 };
@@ -70,12 +80,12 @@ const formAddPhoto = document.querySelector('.form.form_function_add-photo'); //
 
 //Функция открытия попапа добавления фото
 function showAddPhoto() {
-    popupAddPhoto.classList.add('popup_is-opened');
+    openPopup(popupAddPhoto);
 };
 
 //Функция закрытия попапа добавления фото
 function clickCloseAddPhoto() {
-    popupAddPhoto.classList.remove('popup_is-opened');
+  closePopup(popupAddPhoto);
 };
 
 //Создаем функцию создания дом ноды для фотокарточки
@@ -98,52 +108,24 @@ function createPhotoDOMNode(item) {
     //Создаем переменную для кнопки лайка 
     const likeButton = addedPhoto.querySelector('.element__like-button'); 
 
-    //Пишем функцию клика по кнопке лайка
-    function likeButtonClicked (evt) {
-      const eventTarget = evt.target;
-      eventTarget.classList.toggle('element__like-button_active');
-    }
-    
     //Вызываем функцию лайка по клику
     likeButton.addEventListener('click', likeButtonClicked); 
 
     //Создаем переменную для удаления карточки
     const deleteButton = addedPhoto.querySelector('.element__delete-button');
 
-    //Пишем функцию клика по кнопке Удалить 
-    function deleteButtonClicked (evt) {
-      const eventTarget = evt.target;
-      const currentPhoto = eventTarget.closest('.element'); 
-
-      currentPhoto.remove ();
-    }
-
     //Удаляем карточку по клику 
     deleteButton.addEventListener('click', deleteButtonClicked);
 
     addedPhotoImage.addEventListener('click', openFullPhoto);
 
-    //Переменная попапа фулвью фото
-    const popupViewFullPhoto = document.querySelector('.popup.popup_use_view-full-photo');
-
     //Пишем функцию открытия попапа с фото фулл вью c данными фотографии
     function openFullPhoto() {
-      popupViewFullPhoto.classList.add('popup_is-opened');
-      popupViewFullPhoto.querySelector('.popup__full-photo').src = item.link;
-      popupViewFullPhoto.querySelector('.popup__full-photo-title').alt = item.name; 
-      popupViewFullPhoto.querySelector('.popup__full-photo-title').textContent = item.name;
-    }
-
-    //Переменная крестика попапа фул вью
-    const closePopupViewFullPhoto = document.querySelector('#close-popup-view-full-photo');
-
-    //Пишем функцию закрытия попап с фото фул вью 
-    function clickCloseFullPhoto() {
-      popupViewFullPhoto.classList.remove('popup_is-opened');
+      openPopup(popupViewFullPhoto);
+      popupViewFullPhotoImage.src = item.link;
+      popupViewFullPhotoCaption.alt = item.name; 
+      popupViewFullPhotoCaption.textContent = item.name;
     };
-
-    //Закрываем попап фулл вью по клику на крестик 
-    closePopupViewFullPhoto.addEventListener('click', clickCloseFullPhoto);
 
     return addedPhoto; 
 };
@@ -164,6 +146,20 @@ function submitAddedPhoto(evt) {
     clickCloseAddPhoto();
 };
 
+//Пишем функцию клика по кнопке лайка
+function likeButtonClicked (evt) {
+  const eventTarget = evt.target;
+  eventTarget.classList.toggle('element__like-button_active');
+};
+
+//Пишем функцию клика по кнопке Удалить 
+function deleteButtonClicked (evt) {
+  const eventTarget = evt.target;
+  const currentPhoto = eventTarget.closest('.element'); 
+
+  currentPhoto.remove ();
+};
+
 //Сохраняем данные, введенные в попапе, в форме карточки, и закрываем попап
 formAddPhoto.addEventListener('submit', submitAddedPhoto);
 
@@ -172,6 +168,31 @@ clickAddPhoto.addEventListener('click', showAddPhoto);
 
 //Вызываем функцию закрытия попапа добавления фото при клике на иконку крестика 
 closePopupAddPhoto.addEventListener('click', clickCloseAddPhoto);
+
+
+/* 
++++++Функционал фул вью 
+*/
+
+//Константа попапа фулвью фото
+const popupViewFullPhoto = document.querySelector('.popup.popup_use_view-full-photo');
+
+//Константа фотографии фулвью фото
+const popupViewFullPhotoImage = popupViewFullPhoto.querySelector('.popup__full-photo');
+
+//Константа заголовка к фотографии фулвью фото 
+const popupViewFullPhotoCaption = popupViewFullPhoto.querySelector('.popup__full-photo-title');
+
+ //Переменная крестика попапа фул вью
+ const closePopupViewFullPhoto = document.querySelector('#close-popup-view-full-photo');
+
+ //Пишем функцию закрытия попап с фото фул вью 
+ function clickCloseFullPhoto() {
+   closePopup(popupViewFullPhoto);
+ };
+
+//Закрываем попап фулл вью по клику на крестик 
+closePopupViewFullPhoto.addEventListener('click', clickCloseFullPhoto);
 
 /* 
 +++++Шесть карточек «из коробки»
