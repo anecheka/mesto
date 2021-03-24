@@ -18,6 +18,7 @@ const formEditProfile = document.querySelector('.form.form_function_edit-profile
 //++Функция закрытия попапа - универсальная для всех попапов
 function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 //Функция закрытия попапа редактирования профиля
@@ -31,9 +32,10 @@ function editProfile() {
     currentBio.textContent = newBio.value;
 };
 
-//++Функция открытия попапа - универсальная для всех попапов
+//Функция открытия попапа - универсальная для всех попапов
 function openPopup(popup) {
   popup.classList.add('popup_is-opened');
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 //Функция открытия попапа редактирования профиля
@@ -56,6 +58,13 @@ clickEditButton.addEventListener('click', showPopupEditProfile);
 //Вызываем функцию закрытия попапа при клике на иконку крестика 
 closePopupEditProfile.addEventListener('click', clickCloseEditProfile);
 
+//Закрываем попап редактирования профиля по клику на оверлей 
+popupEditProfile.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('popup_is-opened')) {
+  clickCloseEditProfile();
+  };
+});
+
 //Сохраняем данные, введенные в попапе, в профиль пользователя на странице, и закрываем попап
 formEditProfile.addEventListener('submit', submitInfo);
 
@@ -77,6 +86,7 @@ const newPhotoLocationTitle = document.querySelector('#location-name'); //Пер
 const newPhotoImageUrl = document.querySelector('#photo-url'); //Переменная для поля с ссылкой на фото в форме добавления карточки
 const closePopupAddPhoto = document.querySelector('#close-popup-add-photo'); //Переменная для кнопки-крестика в попапе добавления фото
 const formAddPhoto = document.querySelector('.form.form_function_add-photo'); //Переменная для формы редактирования профиля
+const inputErrorMessage = formAddPhoto.querySelectorAll('.form__input-error-message'); //Переменная сообщения об ошибке в попапе (нужна для обнуления сообщения об ошибке при повторном открытии попапа)
 
 //Функция открытия попапа добавления фото
 function showAddPhoto() {
@@ -86,7 +96,25 @@ function showAddPhoto() {
 //Функция закрытия попапа добавления фото
 function clickCloseAddPhoto() {
   closePopup(popupAddPhoto);
+  refreshAddPhoto();
 };
+
+//Функция очистки контента в форме вместе с закрытием попапа 
+function refreshAddPhoto () {
+  newPhotoLocationTitle.value = '';
+  newPhotoImageUrl.value = '';
+  inputErrorMessage.forEach ((element) => {
+    element.textContent = '';
+  });
+};
+
+
+//Закрываем попап добавления фото по клику на оверлей 
+popupAddPhoto.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('popup_is-opened')) {
+  clickCloseAddPhoto();
+  };
+});
 
 //Создаем функцию создания дом ноды для фотокарточки
 function createPhotoDOMNode(item) {
@@ -194,6 +222,13 @@ const popupViewFullPhotoCaption = popupViewFullPhoto.querySelector('.popup__full
 //Закрываем попап фулл вью по клику на крестик 
 closePopupViewFullPhoto.addEventListener('click', clickCloseFullPhoto);
 
+//Закрываем попап фул вью по клику на оверлей 
+popupViewFullPhoto.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('popup_is-opened')) {
+    clickCloseFullPhoto();
+  };
+});
+
 /* 
 +++++Шесть карточек «из коробки»
 */
@@ -236,3 +271,14 @@ function renderGallery() {
 }
 
 renderGallery();
+
+
+
+//Функционал закрытия попапа по клику на Esc 
+
+const closePopupEsc = (evt, popup) => {
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_is-opened');
+    popup.classList.remove('popup_is-opened');
+  };
+};

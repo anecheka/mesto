@@ -8,7 +8,6 @@
     line-height: 17px;
     font-family: inherit;
     color: #000;
-    margin-bottom: 44px;
     outline: 0;
     padding-bottom: 13px;
 }
@@ -18,4 +17,8 @@
         max-width: 238px;
         margin-bottom: 30px;
     }
+}
+
+.form__input::placeholder {
+    color: #C4C4C4;
 }

@@ -1,0 +1,10 @@
+.form__input-error-message {
+    font-size: 12px;
+    line-height: 15px;
+    font-family: inherit;
+    color: #FF0000;
+    display: block; 
+    box-sizing: border-box; 
+    padding-top: 5px; 
+    margin-bottom: 13px;
+}
