@@ -1,13 +1,12 @@
-import { openPopup, popupViewFullPhoto } from './utils.js'
+export default class Card {
 
-class Card {
-
-//Конструктор с данными карточками и селектором template-а
-    constructor(data, cardSelector) {
+//Конструктор с данными карточки и селектором template-а
+    constructor( { data, handleCardClick }, cardSelector) {
       this._name = data.name;
       this._image = data.link;
       this._imageAlt = data.name;
       this._cardSelector = cardSelector;
+      this._handleCardClick = handleCardClick;
     }
 
 //Приватный метод создания карточки
@@ -46,12 +45,8 @@ class Card {
             this._deleteButtonClicked();
             });        
 
-        this._element.querySelector('.element__photo').addEventListener ('click', () => {
-            openPopup(popupViewFullPhoto);
-            document.querySelector('.popup__full-photo').src = this._image;
-            document.querySelector('.popup__full-photo').alt = this._imageAlt; 
-            document.querySelector('.popup__full-photo-title').textContent = this._name;
-              });
+        this._element.querySelector('.element__photo').addEventListener('click', () => { this._handleCardClick();
+        });
     }
 
 /*Публичный метод, который возвращает полностью работоспособный 
@@ -67,5 +62,3 @@ class Card {
       return this._element;
     }
 }
-
-export { Card }

@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
 
     //В конструктор добавляю объект настроек с селектораи и классами формы и форма, которая валидируется
     constructor (formSettings, form) {
@@ -11,13 +11,14 @@ class FormValidator {
 
     //Метод определения невалидного инпута 
     _hasInvalidInput = () => {
-        return this._inputList.some(inputElement => !inputElement.validity.valid); 
+        return this._inputList.some(inputElement => !inputElement.validity.valid);
     };
 
     //Метод переключения состояния кнопки 
-    _toggleButtonState = (inputList) => {
-        if (this._hasInvalidInput(inputList)) {
+    _toggleButtonState = () => {
+        if (this._hasInvalidInput === true) {
             this._buttonElement.classList.add(this._inactiveButtonClass);
+            console.log();
             this._buttonElement.setAttribute('disabled', true);
         } else {
             this._buttonElement.classList.remove(this._inactiveButtonClass);
@@ -52,12 +53,12 @@ class FormValidator {
     };
 
     //Метод для слушателей событий 
-    _setEventListeners = (inputElement) => {
+    _setEventListeners = () => {
         //Ищу все поля инпутов
-        this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); 
+        this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
 
         //Ишу кнопку сабмита конкретной формы 
-        this._buttonElement = document.querySelector(this._submitButtonSelector); 
+        this._buttonElement = document.querySelector(this._submitButtonSelector);
 
         //Вызываю сразу проверку валидности форм и делаю кнопку неактивной
         this._toggleButtonState();
@@ -72,6 +73,7 @@ class FormValidator {
                     //Изменяю состояние кнопки сабмита, если поле невалидно 
                     this._toggleButtonState();
             });
+
         });
     };
 
@@ -87,5 +89,3 @@ class FormValidator {
                 this._setEventListeners();
             };
     }
-
-    export { FormValidator }
