@@ -14,7 +14,7 @@ import PopupWithForm from '../components/PopupWithForm.js'
 
 import UserInfo from '../components/UserInfo.js'
 
-import '../../pages/index.css'
+import './index.css'
 
 //Создаю попап с фото фулвью (экземпляр PopupWithImage), добавляю ему слушателей
 const popupFullViewPhoto = new PopupWithImage ('.popup_use_view-full-photo')
