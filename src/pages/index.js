@@ -84,6 +84,12 @@ const popupEditProfileInfo = new PopupWithForm (
 
 popupEditProfileInfo.setEventListeners();
 
+//Создаю экземпляр класса валидации с формой редактирования профиля 
+const formEditProfileValidated = new FormValidator(formConfig, formEditProfile);
+
+//Запускаю валидацию формы редактирования профиля 
+formEditProfileValidated.enableValidation();
+
 //Добавляю слушатель на кнопку редактирования профиля, передаю данные со страницы в форму, открываю попап 
 
 clickEditButton.addEventListener('click', () => {
@@ -92,16 +98,8 @@ clickEditButton.addEventListener('click', () => {
     newUsername.value = currentUserInfo.username;
     newBio.value = currentUserInfo.bio;
 
-    formEditProfileValidated.enableValidation();
     popupEditProfileInfo.open()
 })
-
-
-//Создаю экземпляр класса валидации с формой редактирования профиля 
-const formEditProfileValidated = new FormValidator(formConfig, formEditProfile);
-
-//Запускаю валидацию формы редактирования профиля 
-formEditProfileValidated.enableValidation();
 
 //Создаю экземпляр класса валидации с формой добавления фотографии
 const formAddPhotoValidated = new FormValidator(formConfig, formAddPhoto); 
