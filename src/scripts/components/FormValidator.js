@@ -16,7 +16,7 @@ export default class FormValidator {
 
     //Метод переключения состояния кнопки 
     _toggleButtonState = () => {
-        if (this._hasInvalidInput === true) {
+        if (this._hasInvalidInput()) {
             this._buttonElement.classList.add(this._inactiveButtonClass);
             console.log();
             this._buttonElement.setAttribute('disabled', true);
@@ -28,14 +28,14 @@ export default class FormValidator {
 
     //Метод добавления стиля / сообщeний ошибки
     _showInputError = (inputElement) => {
-        const errorElement = document.querySelector(`.${inputElement.id}-error`); 
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`); 
         inputElement.classList.add(this._inactiveButtonClass);
         errorElement.textContent = inputElement.validationMessage;
     };
 
     //Метод сброса стилей / сообщений ошибки
     _hideInputError = (inputElement) => {
-        const errorElement = document.querySelector(`.${inputElement.id}-error`); 
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`); 
         inputElement.classList.remove(this._inactiveButtonClass);
         errorElement.textContent= '';
     };
@@ -58,7 +58,7 @@ export default class FormValidator {
         this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
 
         //Ишу кнопку сабмита конкретной формы 
-        this._buttonElement = document.querySelector(this._submitButtonSelector);
+        this._buttonElement = this._form.querySelector(this._submitButtonSelector);
 
         //Вызываю сразу проверку валидности форм и делаю кнопку неактивной
         this._toggleButtonState();
