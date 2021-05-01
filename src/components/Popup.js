@@ -7,13 +7,13 @@ export default class Popup {
     //Публичный метод open, которые отвечает за открытие попапа.
     open () {
         this._popup.classList.add('popup_is-opened');
-        window.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('keydown', this._handleEscClose);
     }
 
     //Публичный метод close, которые отвечает за закрытие попапа.
     close () {
         this._popup.classList.remove('popup_is-opened');
-        window.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('keydown', this._handleEscClose);
     }
     
     //Приватный метод, который содержит логику закрытия попапа клавишей Esc.
@@ -25,7 +25,6 @@ export default class Popup {
     
     //Публичный метод, который добавляет слушатель клика иконке закрытия попапа.
     setEventListeners () {
-        /*this._handleEscClose();*/
 
         this._popup.querySelector('.close-icon').addEventListener('click', () => {
             this.close();
