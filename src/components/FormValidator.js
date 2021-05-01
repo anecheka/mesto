@@ -29,14 +29,14 @@ export default class FormValidator {
     //Метод добавления стиля / сообщeний ошибки
     _showInputError = (inputElement) => {
         const errorElement = this._form.querySelector(`.${inputElement.id}-error`); 
-        inputElement.classList.add(this._inactiveButtonClass);
+        inputElement.classList.add(this._inactiveErrorClass);
         errorElement.textContent = inputElement.validationMessage;
     };
 
     //Метод сброса стилей / сообщений ошибки
     _hideInputError = (inputElement) => {
         const errorElement = this._form.querySelector(`.${inputElement.id}-error`); 
-        inputElement.classList.remove(this._inactiveButtonClass);
+        inputElement.classList.remove(this._inactiveErrorClass);
         errorElement.textContent= '';
     };
 

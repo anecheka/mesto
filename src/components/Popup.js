@@ -1,32 +1,31 @@
 export default class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
+        this._handleEscClose = this._handleEscClose.bind(this);
         }
 
     //Публичный метод open, которые отвечает за открытие попапа.
     open () {
         this._popup.classList.add('popup_is-opened');
-        document.addEventListener('keydown', this._handleEscClose.bind(this));
+        window.addEventListener('keydown', this._handleEscClose);
     }
 
     //Публичный метод close, которые отвечает за закрытие попапа.
     close () {
         this._popup.classList.remove('popup_is-opened');
-        document.removeEventListener('keydown', this._handleEscClose.bind(this));
+        window.removeEventListener('keydown', this._handleEscClose);
     }
     
     //Приватный метод, который содержит логику закрытия попапа клавишей Esc.
-    _handleEscClose () {
-        document.addEventListener('keydown', (evt) => {
-                if (evt.key === 'Escape') {
-                this.close();
-                };
-        });
+    _handleEscClose (event) {
+        if (event.key === 'Escape') {
+        this.close();
+        };
     }
     
     //Публичный метод, который добавляет слушатель клика иконке закрытия попапа.
     setEventListeners () {
-        this._handleEscClose();
+        /*this._handleEscClose();*/
 
         this._popup.querySelector('.close-icon').addEventListener('click', () => {
             this.close();

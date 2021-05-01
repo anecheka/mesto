@@ -20,19 +20,24 @@ import './index.css'
 const popupFullViewPhoto = new PopupWithImage ('.popup_use_view-full-photo')
 popupFullViewPhoto.setEventListeners();
 
+//Пишу функцию создания карточки 
+const createCard = (data) => {
+    const newPhoto = new Card (
+        {
+            data,
+            handleCardClick: () => {
+                popupFullViewPhoto.open(data)
+            }
+        },
+         '#photo')
+   return newPhoto.generateCard();
+}
+
 //Создаю грид фотокарточек (экземпляр Section)
 const renderGallery = new Section ({
     items: initialCards,
     renderer: (data) => {
-        const newPhoto = new Card (
-            {
-                data,
-                handleCardClick: () => {
-                    popupFullViewPhoto.open(data)
-                }
-            },
-             '#photo')
-        const newPhotoAdded = newPhoto.generateCard();
+        const newPhotoAdded = createCard(data);
         renderGallery.addItem(newPhotoAdded, true);
     },
 }, photoGallery)
@@ -40,20 +45,15 @@ const renderGallery = new Section ({
 //Рендерю фотокарточки на странице
 renderGallery.renderItems();
 
+//Создаю экземпляр класса валидации с формой добавления фотографии
+const formAddPhotoValidated = new FormValidator(formConfig, formAddPhoto); 
+
 //Создаю попапа добавления фото (экземпляр PopupWithForm) и добавляю ему слушателей
 const popupAddPhotoForm = new PopupWithForm (
     '.popup_use_add-photo', 
     (values) => {
         const data = {link: values.link, name: values.name}
-        const newPhoto = new Card (
-            {
-                data,
-                handleCardClick: () => {
-                    popupFullViewPhoto.open(data)
-                }
-            },
-             '#photo')
-        const newPhotoAdded = newPhoto.generateCard();
+        const newPhotoAdded = createCard(data);
         renderGallery.addItem(newPhotoAdded, false);
         popupAddPhotoForm.close();
     }, 
@@ -64,12 +64,14 @@ popupAddPhotoForm.setEventListeners();
 
 //Добавляю слушателя на кнопку добавление фотографии 
 clickAddPhoto.addEventListener ('click', () => {
+    //Запускаю валидацию формы добавления фотографии
+    formAddPhotoValidated.enableValidation();
     popupAddPhotoForm.open()
 })
 
 
 //Создаю экземпляра класса с объектом информации о пользователе 
-const userinfo = new UserInfo();
+const userinfo = new UserInfo('.profile__username', '.profile__bio');
 
 //Создаю попап редактирования профиля (экземпляр класса PopupWithForm) и добавляю слушателей
 const popupEditProfileInfo = new PopupWithForm (
@@ -87,9 +89,6 @@ popupEditProfileInfo.setEventListeners();
 //Создаю экземпляр класса валидации с формой редактирования профиля 
 const formEditProfileValidated = new FormValidator(formConfig, formEditProfile);
 
-//Запускаю валидацию формы редактирования профиля 
-formEditProfileValidated.enableValidation();
-
 //Добавляю слушатель на кнопку редактирования профиля, передаю данные со страницы в форму, открываю попап 
 
 clickEditButton.addEventListener('click', () => {
@@ -98,11 +97,8 @@ clickEditButton.addEventListener('click', () => {
     newUsername.value = currentUserInfo.username;
     newBio.value = currentUserInfo.bio;
 
+    //Запускаю валидацию формы редактирования профиля 
+    formEditProfileValidated.enableValidation();
+
     popupEditProfileInfo.open()
 })
-
-//Создаю экземпляр класса валидации с формой добавления фотографии
-const formAddPhotoValidated = new FormValidator(formConfig, formAddPhoto); 
-
-//Запускаю валидацию формы добавления фотографии
-formAddPhotoValidated.enableValidation();

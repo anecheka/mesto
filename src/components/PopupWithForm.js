@@ -4,7 +4,8 @@ export default class PopupWithForm extends Popup {
     constructor(popupSelector, handleFormSubmit) {
         super(popupSelector);
         this._handleFormSubmit = handleFormSubmit;
-        this._inputList = this._popup.querySelector('.form')
+        this._inputList = this._popup.querySelector('.form');
+        this._inputList.inputErrorClass = this._popup.querySelectorAll('.form__input-error-message');
         }
     
     _getInputValues () {
@@ -24,7 +25,7 @@ export default class PopupWithForm extends Popup {
         this._inputList.addEventListener('submit', (evt) => {
             evt.preventDefault ();
             this._handleFormSubmit(this._getInputValues());
-            this.close;
+            this.close();
         })
     }
 
@@ -32,14 +33,11 @@ export default class PopupWithForm extends Popup {
     //так как при закрытии попапа форма должна ещё и сбрасываться.
 
     close () {
-        this._inputList.querySelectorAll('.form__input')
-        .forEach ((inputElement) => {
-            inputElement.value = '';
-        });
-        this._inputList.querySelectorAll('.form__input-error-message')
-        .forEach ((inputError) => {
-            inputError.textContent = '';
-        });
+        this._inputList.reset();
+        this._inputList.inputErrorClass
+        .forEach ((inputError) => { 
+            inputError.textContent = ''; 
+        }); 
         super.close(); 
     }
 }

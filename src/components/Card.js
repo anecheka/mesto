@@ -32,6 +32,7 @@ export default class Card {
 //Приватный метод для слушателя удаления 
     _deleteButtonClicked() {
         this._element.remove();
+        this._element = null;
     }
 
 //Приватный метод для слушателей событий 

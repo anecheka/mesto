@@ -1,7 +1,7 @@
 export default  class UserInfo {
-    constructor() {
-        this._username = document.querySelector('.profile__username');
-        this._bio = document.querySelector('.profile__bio')
+    constructor(userNameSelector, bioSelector) {
+        this._username = document.querySelector(userNameSelector);
+        this._bio = document.querySelector(bioSelector)
     }
     
     //Публичный метод, который возвращает объект с данными пользователя, для попапа редактирования профиля при открытии 
