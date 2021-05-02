@@ -7,6 +7,13 @@ export default class FormValidator {
     this._inactiveButtonClass = formSettings.inactiveButtonClass;
     this._inputErrorClass = formSettings.inputErrorClass;
     this._form = form;
+    this._buttonElement = this._form.querySelector(this._submitButtonSelector);
+    }
+
+    //Метод деактивации кнопки сабмита 
+    disableSubmitButton = () => {
+        this._buttonElement.classList.add(this._inactiveButtonClass);
+        this._buttonElement.setAttribute('disabled', true);
     }
 
     //Метод определения невалидного инпута 
@@ -17,9 +24,8 @@ export default class FormValidator {
     //Метод переключения состояния кнопки 
     _toggleButtonState = () => {
         if (this._hasInvalidInput()) {
-            this._buttonElement.classList.add(this._inactiveButtonClass);
-            console.log();
-            this._buttonElement.setAttribute('disabled', true);
+            this.disableSubmitButton();
+
         } else {
             this._buttonElement.classList.remove(this._inactiveButtonClass);
             this._buttonElement.removeAttribute('disabled');
@@ -56,10 +62,7 @@ export default class FormValidator {
     _setEventListeners = () => {
         //Ищу все поля инпутов
         this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-
-        //Ишу кнопку сабмита конкретной формы 
-        this._buttonElement = this._form.querySelector(this._submitButtonSelector);
-
+        
         //Вызываю сразу проверку валидности форм и делаю кнопку неактивной
         this._toggleButtonState();
 

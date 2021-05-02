@@ -16,6 +16,9 @@ import UserInfo from '../components/UserInfo.js'
 
 import './index.css'
 
+/*
+import Popup from '../../scripts/components/Popup.js'*/
+
 //Создаю попап с фото фулвью (экземпляр PopupWithImage), добавляю ему слушателей
 const popupFullViewPhoto = new PopupWithImage ('.popup_use_view-full-photo')
 popupFullViewPhoto.setEventListeners();
@@ -48,6 +51,9 @@ renderGallery.renderItems();
 //Создаю экземпляр класса валидации с формой добавления фотографии
 const formAddPhotoValidated = new FormValidator(formConfig, formAddPhoto); 
 
+//Запускаю валидацию формы добавления фотографии
+formAddPhotoValidated.enableValidation();
+
 //Создаю попапа добавления фото (экземпляр PopupWithForm) и добавляю ему слушателей
 const popupAddPhotoForm = new PopupWithForm (
     '.popup_use_add-photo', 
@@ -64,11 +70,9 @@ popupAddPhotoForm.setEventListeners();
 
 //Добавляю слушателя на кнопку добавление фотографии 
 clickAddPhoto.addEventListener ('click', () => {
-    //Запускаю валидацию формы добавления фотографии
-    formAddPhotoValidated.enableValidation();
+    formAddPhotoValidated.disableSubmitButton();
     popupAddPhotoForm.open()
 })
-
 
 //Создаю экземпляра класса с объектом информации о пользователе 
 const userinfo = new UserInfo('.profile__username', '.profile__bio');
@@ -89,6 +93,9 @@ popupEditProfileInfo.setEventListeners();
 //Создаю экземпляр класса валидации с формой редактирования профиля 
 const formEditProfileValidated = new FormValidator(formConfig, formEditProfile);
 
+//Запускаю валидацию формы редактирования профиля 
+formEditProfileValidated.enableValidation();
+
 //Добавляю слушатель на кнопку редактирования профиля, передаю данные со страницы в форму, открываю попап 
 
 clickEditButton.addEventListener('click', () => {
@@ -97,8 +104,6 @@ clickEditButton.addEventListener('click', () => {
     newUsername.value = currentUserInfo.username;
     newBio.value = currentUserInfo.bio;
 
-    //Запускаю валидацию формы редактирования профиля 
-    formEditProfileValidated.enableValidation();
-
+    formEditProfileValidated.disableSubmitButton();
     popupEditProfileInfo.open()
 })
