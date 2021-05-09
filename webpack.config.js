@@ -12,6 +12,10 @@ module.exports = {
     filename: 'main.js',
     publicPath: '',
   },
+  mode: 'production',
+    resolve: {
+        fallback: { "path": require.resolve("path-browserify") }
+    },
   mode: 'development',
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),

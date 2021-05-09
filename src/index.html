@@ -12,13 +12,16 @@
     <main class="content root__section-position">
         <div class="profile">
             <div class="profile__all-user-info">
-                <img src="<%=require('./images/profile__avatar_user_1.jpg')%>" alt="Фотография профиля" class="profile__avatar">
+                <div class="profile__avatar">
+                    <img src="" alt="Фотография профиля" class="profile__avatar-image">
+                    <div class="profile__avatar-edit-button"></div>
+                </div>
                 <div class="profile__info">
                     <div class="profile__username-editing">
-                        <h1 class="profile__username">Жак-Ив Кусто</h1>
+                        <h1 class="profile__username"></h1>
                         <button type="button" id="edit-profile" class="profile__edit-button" aria-label="Редактировать профиль"></button>
                     </div>
-                    <p class="profile__bio">Исследователь океана</p>
+                    <p class="profile__bio"></p>
                 </div>
             </div>
             <button type="button" class="profile__add-button" id="add-element" aria-label="Добавить место"></button>
@@ -55,6 +58,19 @@
                 <button type="button" class="close-icon" id="close-popup-add-photo" aria-label="Закрыть"></button>
             </div>
         </div>
+        <div class="popup popup_use_update-avatar-image">
+            <div class="popup__content">
+                <form class="form form_function_update-avatar-image" name="Update-avatar-image" novalidate>
+                    <h2 class="form__title">Обновить аватар</h2>
+                    <fieldset class="form__container">
+                        <input class="form__input" type="url" name="link" id="avatar-image-url" placeholder="Ссылка на фотографию" required>
+                        <span class="form__input-error-message avatar-image-url-error"></span>
+                        <button type="submit" class="form__submit-button" id="submit-update-avatar-image">Сохранить</button>
+                    </fieldset>
+                </form>
+                <button type="button" class="close-icon" id="close-popup-update-avatar-image" aria-label="Закрыть"></button>
+            </div>
+        </div>
         <div class="popup popup_use_view-full-photo">
             <div class="popup__full-photo-container">
                 <img class="popup__full-photo" src="#" alt="#">
@@ -62,9 +78,20 @@
                 <button type="button" class="close-icon" id="close-popup-view-full-photo" aria-label="Закрыть"></button>
             </div>
         </div>
+        <div class="popup popup_use_confirm-remove-photo">
+            <div class="popup__content">
+                <form class="form form_function_confirm-remove-photo" name="Confirm-remove-photo" novalidate>
+                    <h2 class="form__title">Вы уверены?</h2>
+                    <fieldset class="form__container form__container_content_submit-button-only">
+                        <button type="submit" class="form__submit-button" id="submit-confirm-remove-photo">Да</button>
+                    </fieldset>
+                </form>
+                <button type="button" class="close-icon" id="close-popup-confirm-remove-photo" aria-label="Закрыть"></button>
+            </div>
+        </div>
     </main>
     <footer class="footer root__section-position">
-        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
     <template id="photo">
         <li class="element">
@@ -72,7 +99,10 @@
             <button type="button" class="element__delete-button" aria-label="Удалить фотографию"></button>
             <div class="element__info">
                 <h2 class="element__title"></h2>
-                <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
+                <div class="element__like-counter">
+                    <button type="button" class="element__like-button" aria-label="Отметить фотографию как понравившуюся"></button>
+                    <p class="element__like-number"></p>
+                </div>
             </div>
         </li>
       </template>

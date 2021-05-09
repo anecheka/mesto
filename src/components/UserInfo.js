@@ -1,7 +1,8 @@
 export default  class UserInfo {
-    constructor(userNameSelector, bioSelector) {
+    constructor(userNameSelector, bioSelector, avatarSelector) {
         this._username = document.querySelector(userNameSelector);
-        this._bio = document.querySelector(bioSelector)
+        this._bio = document.querySelector(bioSelector);
+        this._avatar = document.querySelector(avatarSelector);
     }
     
     //Публичный метод, который возвращает объект с данными пользователя, для попапа редактирования профиля при открытии 
@@ -12,9 +13,10 @@ export default  class UserInfo {
         return this._userInfo;
     }
     //Публичный метод, который принимает новые данные пользователя и отправляет на страницу
-    setUserInfo (username, bio) {
-        this._username.textContent = username;
-        this._bio.textContent = bio
+    setUserInfo (data) {
+        this._username.textContent = data.name;
+        this._bio.textContent = data.about;
+        this._avatar.src = data.avatar;
     }
 
 }
