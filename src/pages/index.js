@@ -77,6 +77,7 @@ const createCard = (item) => {
                     () => {
                         api.deleteCard(item.id)
                         .then(() => newPhoto.deleteButtonClicked())
+                        .then (()=> popupConfirmCardRemoval.close())
                         .catch(err => console.error(err))
                     }
                 )
@@ -122,14 +123,14 @@ const popupAddPhotoForm = new PopupWithForm (
                 likes: item.likes,
                 owner: item.owner,
             });
-            renderGallery.addItem(newPhotoAdded, false);
-            dataSubmitting (formAddPhoto, false, 'Создать')
-
-            popupAddPhotoForm.close()
+            renderGallery.addItem(newPhotoAdded, false)
+        .then (() => popupAddPhotoForm.close())
         })
         .catch((err) => {
             console.log(err);
         })
+        .finally (() => 
+            dataSubmitting (formAddPhoto, false, 'Создать'))
     },
     '.form__container'
     )
@@ -156,14 +157,14 @@ const popupEditProfileInfo = new PopupWithForm (
         dataSubmitting (formEditProfile, true)
         api.updateUserData(newUsername.value, newBio.value)
         .then ((userData) => {
-            userinfo.setUserInfo(userData),
-            dataSubmitting (formEditProfile, false, 'Сохранить')
+            userinfo.setUserInfo(userData)
         })
+        .then (() => popupEditProfileInfo.close())
         .catch((err) => {
             console.log(err);
         })
-
-        popupEditProfileInfo.close();
+        .finally (() => 
+            dataSubmitting (formEditProfile, false, 'Сохранить'))
     }, 
     '.form__container'
 )
@@ -195,10 +196,13 @@ const popupChangeAvatarImage = new PopupWithForm (
         api.updateAvatarPhoto(newAvatarURL.value)
         .then ((userData) => {
             userinfo.setUserInfo(userData)
-            dataSubmitting (formChangeAvatar, false, 'Сохранить')
         })
-        popupChangeAvatarImage.close();
-    }, 
+        .then (() => popupChangeAvatarImage.close())
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally (()=> dataSubmitting (formChangeAvatar, false, 'Сохранить'))
+        }, 
     '.form__container'
     )
 
@@ -229,7 +233,9 @@ function dataSubmitting (form, isLoading, copy) {
     const submitButton = form.querySelector('.form__submit-button')
     if (isLoading) {
         submitButton.textContent = 'Cохранение...';
+        submitButton.setAttribute('disabled', true);
     } else if (!isLoading) {
-        submitButton.textContent = copy
+        submitButton.textContent = copy; 
+        submitButton.removeAttribute('disabled');
     }
 }
