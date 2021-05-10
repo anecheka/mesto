@@ -123,9 +123,8 @@ const popupAddPhotoForm = new PopupWithForm (
                 likes: item.likes,
                 owner: item.owner,
             });
-            renderGallery.addItem(newPhotoAdded, false)
+            renderGallery.addItem(newPhotoAdded, false)})
         .then (() => popupAddPhotoForm.close())
-        })
         .catch((err) => {
             console.log(err);
         })
